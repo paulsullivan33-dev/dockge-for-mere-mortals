@@ -1,0 +1,28 @@
+site_name: Dockge for Mere Mortals
+site_description: A web manager for Docker Compose stacks that keeps every stack as a plain compose.yaml file on disk. Installing Dockge, creating the first admin account, writing and validating stacks in its editor, converting docker run lines into services, and the honest line between what Dockge does and what the Docker daemon does, with the limits stated plainly.
+site_url: https://paulsullivan33-dev.github.io/dockge-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code MIT'
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What Dockge Is: what-dockge-is.md
+  - The Moving Parts: the-moving-parts.md
+  - Installing Dockge: installing-dockge.md
+  - Setup and First Login: setup-and-first-login.md
+  - Your First Stack: your-first-stack.md
+  - Stacks Are Just Files: stacks-are-just-files.md
+  - The Editor and Validation: the-editor-and-validation.md
+  - Deploying and the Day to Day: deploying-and-day-to-day.md
+  - Converting a Docker Run Line: converting-docker-run.md
+  - Agents and Settings: agents-and-settings.md
+  - Recipes: recipes.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md

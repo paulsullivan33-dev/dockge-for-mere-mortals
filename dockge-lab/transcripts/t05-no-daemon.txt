@@ -1,0 +1,48 @@
+connected, socket id: soBSSVTfvTluC_ibAAAF
+[server push: info] {"primaryHostname":null}
+--- login
+{
+  "ok": true
+}
+[server push: info] {"version":"1.5.0","latestVersion":"1.4.2","isContainer":false,"primaryHostname":null}
+--- deployStack bookmark-vault (no daemon)
+{
+  "ok": false,
+  "msg": "Failed to deploy, please check the terminal output for more information.",
+  "msgi18n": true
+}
+--- startStack bookmark-vault (no daemon)
+{
+  "ok": false,
+  "msg": "Failed to start, please check the terminal output for more information.",
+  "msgi18n": true
+}
+--- serviceStatusList (no daemon)
+{
+  "ok": true,
+  "serviceStatusList": {}
+}
+--- getDockerNetworkList (no daemon)
+{
+  "ok": false,
+  "msg": "Process exited with code 1",
+  "msgi18n": true
+}
+--- dockerStats (no daemon)
+{
+  "ok": true,
+  "dockerStats": {}
+}
+--- downStack (no daemon)
+{
+  "ok": false,
+  "msg": "Failed to down, please check the terminal output for more information.",
+  "msgi18n": true
+}
+--- deleteStack (no daemon)
+{
+  "ok": false,
+  "msg": "Failed to delete, please check the terminal output for more information.",
+  "msgi18n": true
+}
+driver done: deploy

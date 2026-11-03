@@ -1,0 +1,38 @@
+$ server startup log (Dockge 1.5.0, port 18087)
+2026-11-03T02:19:33Z [SERVER] INFO: Welcome to dockge!
+2026-11-03T02:19:33Z [SERVER] INFO: NODE_ENV: production
+2026-11-03T02:19:33Z [SERVER] INFO: Server Type: HTTP
+2026-11-03T02:19:33Z [SERVER] INFO: Data Dir: /home/hatch/workspace/dockge-labwork/data/
+2026-11-03T02:19:33Z [DB] WARN: ENOENT: no such file or directory, open '/home/hatch/workspace/dockge-labwork/data/db-config.json'
+2026-11-03T02:19:33Z [DB] INFO: Database Type: sqlite
+2026-11-03T02:19:33Z [SERVER] INFO: Connected to the database
+2026-11-03T02:19:33Z [SERVER] INFO: JWT secret is not found, generate one.
+2026-11-03T02:19:33Z [SERVER] INFO: Stored JWT secret into database
+2026-11-03T02:19:33Z [SERVER] INFO: No user, need setup
+2026-11-03T02:19:33Z [SERVER] INFO: Listening on 127.0.0.1:18087
+
+$ curl -s -D - http://127.0.0.1:18087/ (headers + title)
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: text/html; charset=utf-8
+Content-Length: 1189
+ETag: W/"4a5-tlKqsJQ1KFSnB/7WyzjIAjC4214"
+Date: Tue, 03 Nov 2026 02:20:10 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+<title>Dockge</title>
+
+$ SPA routes served (same index.html shell)
+/setup -> 200 text/html; charset=utf-8
+/compose -> 200 text/html; charset=utf-8
+/settings -> 200 text/html; charset=utf-8
+/console -> 200 text/html; charset=utf-8
+
+$ data dir created by Dockge
+data
+data/db-config.json
+data/dockge.db
+data/dockge.db-shm
+data/dockge.db-wal
+stacks

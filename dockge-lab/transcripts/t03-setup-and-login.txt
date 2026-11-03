@@ -1,0 +1,26 @@
+connected, socket id: 0gCBdpep8DjFovLWAAAB
+[server push: setup] 
+[server push: info] {"primaryHostname":null}
+--- setup (create first admin)
+{
+  "ok": true,
+  "msg": "successAdded",
+  "msgi18n": true
+}
+--- setup again (should refuse)
+{
+  "ok": false,
+  "msg": "Dockge has been initialized. If you want to run setup again, please delete the database."
+}
+--- login (wrong password)
+{
+  "ok": false,
+  "msg": "authIncorrectCreds",
+  "msgi18n": true
+}
+--- login (correct)
+{
+  "ok": true,
+  "token": "eyJhbGciOiJIUzI1NiIsInR5c…"
+}
+driver done: setup

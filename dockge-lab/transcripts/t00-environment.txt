@@ -1,0 +1,58 @@
+$ uname/os/node/npm
+Description:	Ubuntu 24.04.5 LTS
+v24.22.1
+10.9.4
+git version 2.43.0
+$ docker?
+/usr/bin/docker
+ls: cannot access '/var/run/docker.sock': No such file or directory
+$ git clone https://github.com/louislam/dockge.git
+Cloning into 'dockge'...
+clone rc=0
+$ git log / describe / package version
+0329dabb5003f206d4fd9f7403a6af26d7138497 2026-10-23 ci: drop the self-hosted ARM runners (#1010)
+dockge 1.5.0
+{
+  "fmt": "eslint \"**/*.{ts,vue}\" --fix",
+  "lint": "eslint \"**/*.{ts,vue}\"",
+  "check-ts": "tsc --noEmit",
+  "start": "tsx ./backend/index.ts",
+  "dev": "concurrently -k -r \"wait-on tcp:5000 && npm run dev:backend \" \"npm run dev:frontend\"",
+  "dev:backend": "cross-env NODE_ENV=development tsx watch --inspect ./backend/index.ts",
+  "dev:frontend": "cross-env NODE_ENV=development vite --host --config ./frontend/vite.config.ts",
+  "release-final": "tsx ./extra/test-docker.ts && tsx extra/update-version.ts && npm run build:frontend && npm run build:docker",
+  "release-beta": "tsx ./extra/test-docker.ts && tsx extra/update-version.ts && npm run build:frontend && npm run build:docker-beta",
+  "build:frontend": "vite build --config ./frontend/vite.config.ts",
+  "build:docker-base": "docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t louislam/dockge:base -f ./docker/Base.Dockerfile . --push",
+  "build:docker": "node ./extra/env2arg.js docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t louislam/dockge:latest -t louislam/dockge:1 -t louislam/dockge:$VERSION -t louislam/dockge:beta -t louislam/dockge:nightly --target release -f ./docker/Dockerfile . --push",
+  "build:docker-beta": "node ./extra/env2arg.js docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t louislam/dockge:beta -t louislam/dockge:$VERSION --target release -f ./docker/Dockerfile . --push",
+  "build:healthcheck": "docker buildx build -f docker/BuildHealthCheck.Dockerfile --platform linux/amd64,linux/arm64,linux/arm/v7 -t louislam/dockge:build-healthcheck . --push",
+  "release-nightly": "npm run build:frontend && docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t louislam/dockge:nightly -t ghcr.io/louislam/dockge:nightly --target nightly -f ./docker/Dockerfile . --push",
+  "start-docker": "docker run --rm -p 5001:5001 --name dockge louislam/dockge:latest",
+  "mark-as-nightly": "tsx ./extra/mark-as-nightly.ts",
+  "reformat-changelog": "tsx ./extra/reformat-changelog.ts",
+  "reset-password": "tsx ./extra/reset-password.ts"
+}
+$ top level
+total 496
+drwxrwx--- 1 root root    376 Nov  3 02:16 .
+drwxrwx--- 1 root root     34 Nov  3 02:16 ..
+-rw-rw---- 1 root root    171 Nov  3 02:16 .dockerignore
+-rw-rw---- 1 root root    308 Nov  3 02:16 .editorconfig
+-rw-rw---- 1 root root   3278 Nov  3 02:16 .eslintrc.cjs
+drwxrwx--- 1 root root    152 Nov  3 02:16 .git
+drwxrwx--- 1 root root    166 Nov  3 02:16 .github
+-rw-rw---- 1 root root    114 Nov  3 02:16 .gitignore
+-rw-rw---- 1 root root   4994 Nov  3 02:16 CONTRIBUTING.md
+-rw-rw---- 1 root root   1066 Nov  3 02:16 LICENSE
+-rw-rw---- 1 root root   7977 Nov  3 02:16 README.md
+-rw-rw---- 1 root root    839 Nov  3 02:16 SECURITY.md
+drwxrwx--- 1 root root    522 Nov  3 02:16 backend
+drwxrwx--- 1 root root     58 Nov  3 02:16 common
+-rw-rw---- 1 root root    760 Nov  3 02:16 compose.yaml
+drwxrwx--- 1 root root    104 Nov  3 02:16 docker
+drwxrwx--- 1 root root    288 Nov  3 02:16 extra
+drwxrwx--- 1 root root     96 Nov  3 02:16 frontend
+-rw-rw---- 1 root root 448940 Nov  3 02:16 package-lock.json
+-rw-rw---- 1 root root   5075 Nov  3 02:16 package.json
+-rw-rw---- 1 root root    253 Nov  3 02:16 tsconfig.json

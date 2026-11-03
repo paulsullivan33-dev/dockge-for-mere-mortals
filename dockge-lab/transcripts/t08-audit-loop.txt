@@ -1,0 +1,3 @@
+$ Audit loop over the lab stacks folder (docker compose config --quiet per folder)
+OK   bookmark-vault
+OK   hand-made-counter

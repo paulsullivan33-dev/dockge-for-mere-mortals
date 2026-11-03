@@ -1,0 +1,15 @@
+login: {"ok":true,"token":"eyJhbGciOi…[truncated]"}
+getStack hand-made-counter: {
+  "ok": true,
+  "stack": {
+    "name": "hand-made-counter",
+    "status": 0,
+    "tags": [],
+    "isManagedByDockge": true,
+    "composeFileName": "compose.yaml",
+    "endpoint": "",
+    "composeYAML": "services:\n  counter:\n    image: busybox:1.36\n    command: [\"sh\", \"-c\", \"i=0; while true; do i=$$((i+1)); echo count=$$i; sleep 5; done\"]\n",
+    "composeENV": "",
+    "primaryHostname": "localhost"
+  }
+}

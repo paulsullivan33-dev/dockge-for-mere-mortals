@@ -1,0 +1,13 @@
+services:
+  web:
+    image: nginx:1.27-alpine
+    container_name: bookmark-vault-web
+    ports:
+      - "8080:80"
+    environment:
+      - VAULT_TITLE=${VAULT_TITLE:-Bookmark Vault}
+    restart: unless-stopped
+  keeper:
+    image: busybox:1.36
+    command: ["sh", "-c", "while true; do echo vault-ok; sleep 60; done"]
+    restart: unless-stopped

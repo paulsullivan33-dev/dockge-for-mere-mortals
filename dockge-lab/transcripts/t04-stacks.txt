@@ -1,0 +1,70 @@
+connected, socket id: EI7IZ8fe1uoa761TAAAD
+[server push: info] {"primaryHostname":null}
+--- login
+{
+  "ok": true
+}
+[server push: info] {"version":"1.5.0","latestVersion":"1.4.2","isContainer":false,"primaryHostname":null}
+--- requestStackList (empty)
+{
+  "ok": true,
+  "msg": "Updated",
+  "msgi18n": true
+}
+--- saveStack bookmark-vault (valid)
+{
+  "ok": true,
+  "msg": "Saved",
+  "msgi18n": true
+}
+--- getStack bookmark-vault
+{
+  "ok": true,
+  "stack": {
+    "name": "bookmark-vault",
+    "status": 0,
+    "tags": [],
+    "isManagedByDockge": true,
+    "composeFileName": "compose.yaml",
+    "endpoint": "",
+    "composeYAML": "services:\n  web:\n    image: nginx:1.27-alpine\n    container_name: bookmark-vault-web\n    ports:\n      - \"8080:80\"\n    environment:\n      - VAULT_TITLE=${VAULT_TITLE:-Bookmark Vault}\n    restart: unless-stopped\n  keeper:\n    image: busybox:1.36\n    command: [\"sh\", \"-c\", \"while true; do echo vault-ok; sleep 60; done\"]\n    restart: unless-stopped\n",
+    "composeENV": "",
+    "primaryHostname": "localhost"
+  }
+}
+--- requestStackList (one stack)
+{
+  "ok": true,
+  "msg": "Updated",
+  "msgi18n": true
+}
+--- saveStack duplicate name
+{
+  "ok": false,
+  "msg": "Stack name already exists",
+  "msgi18n": true
+}
+--- saveStack bad name
+{
+  "ok": false,
+  "msg": "Stack name can only contain [a-z][0-9] _ - only",
+  "msgi18n": true
+}
+--- saveStack broken YAML
+{
+  "ok": false,
+  "msg": "Flow sequence in block collection must be sufficiently indented and end with a ] at line 4, column 1:\n\n   image: [unclosed\n\n^\n",
+  "msgi18n": true
+}
+--- saveStack invalid .env
+{
+  "ok": false,
+  "msg": "Invalid .env format",
+  "msgi18n": true
+}
+--- composerize a docker run line
+{
+  "ok": true,
+  "composeTemplate": "services:\n    nginx:\n        container_name: hello-web\n        ports:\n            - 8081:80\n        environment:\n            - TITLE=Hello\n        image: nginx:1.27-alpine"
+}
+driver done: stacks

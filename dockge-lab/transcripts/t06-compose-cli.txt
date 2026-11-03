@@ -1,0 +1,68 @@
+$ What Dockge ran, from its own server log (stderr of the docker CLI)
+  signal: null,
+  stdout: '',
+  stderr: 'failed to connect to the docker API at unix:///var/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /var/run/docker.sock: connect: no such file or directory\n'
+--
+  signal: null,
+  stdout: '',
+  stderr: 'failed to connect to the docker API at unix:///var/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /var/run/docker.sock: connect: no such file or directory\n'
+--
+  signal: null,
+  stdout: '',
+  stderr: 'failed to connect to the docker API at unix:///var/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /var/run/docker.sock: connect: no such file or directory\n'
+--
+  signal: null,
+  stdout: '',
+  stderr: 'failed to connect to the docker API at unix:///var/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /var/run/docker.sock: connect: no such file or directory\n'
+--
+  signal: null,
+  stdout: '',
+  stderr: 'failed to connect to the docker API at unix:///var/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /var/run/docker.sock: connect: no such file or directory\n'
+--
+  signal: null,
+  stdout: '',
+  stderr: 'failed to connect to the docker API at unix:///var/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /var/run/docker.sock: connect: no such file or directory\n'
+--
+  signal: null,
+  stdout: '',
+  stderr: 'failed to connect to the docker API at unix:///var/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /var/run/docker.sock: connect: no such file or directory\n'
+--
+  signal: null,
+  stdout: '',
+
+$ The same command by hand in the stack folder
+failed to connect to the docker API at unix:///var/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /var/run/docker.sock: connect: no such file or directory
+exit=1
+
+$ docker compose ps (also needs the daemon)
+failed to connect to the docker API at unix:///var/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /var/run/docker.sock: connect: no such file or directory
+exit=1
+
+$ docker compose config (parses and renders without a daemon)
+name: bookmark-vault
+services:
+  keeper:
+    restart: unless-stopped
+    command:
+      - sh
+      - -c
+      - while true; do echo vault-ok; sleep 60; done
+    image: busybox:1.36
+    networks:
+      default: null
+  web:
+    restart: unless-stopped
+    container_name: bookmark-vault-web
+    environment:
+      VAULT_TITLE: Bookmark Vault
+    image: nginx:1.27-alpine
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "8080"
+        protocol: tcp
+networks:
+  default:
+    name: bookmark-vault_default
